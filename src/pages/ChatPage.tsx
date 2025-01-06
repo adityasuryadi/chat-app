@@ -2,7 +2,7 @@ import { ChatTemplate } from '@/components/templates/ChatTemplates'
 
 
 
-export const ChatPage = () => {
+const ChatPage = () => {
   return(
     <>
       <ChatTemplate></ChatTemplate>
@@ -10,3 +10,4 @@ export const ChatPage = () => {
   )
 }
 
+export default ChatPage

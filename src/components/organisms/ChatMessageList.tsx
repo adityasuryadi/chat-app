@@ -19,15 +19,6 @@ const ChatMessageList = () => {
   useEffect(() => {
     if (message) {
       setMessages(prevMessages => [...prevMessages, message])
-
-      // Simulate bot response
-    // setTimeout(() => {
-    //   const botMessage: Message = {
-    //     from: 'bot',
-    //     message: "Thank you for your message. How else can I assist you?",
-    //   }
-    //   setMessages(prevMessages => [...prevMessages, botMessage])
-    // }, 1000)
     }
   }, [message])
   

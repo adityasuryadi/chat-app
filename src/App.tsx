@@ -1,13 +1,15 @@
-import { ChatPage } from '@/pages/ChatPage'
+import { BrowserRouter as Router } from 'react-router';
 import './App.css'
+import AppRoutes from '@/routes'
 function App() {
   return (
     <>
+      <Router>
       <div className="min-h-screen bg-background flex items-center justify-center p-4">
-      <ChatPage></ChatPage>
+        <AppRoutes />
       </div>
+      </Router>
     </>
   )
 }
-
 export default App
