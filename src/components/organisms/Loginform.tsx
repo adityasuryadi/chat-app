@@ -3,6 +3,7 @@ import FormField from "@/components/moleculs/FormField";
 import Button from "@/components/atoms/Button";
 import {  ErrorResponse } from "@/types/api";
 import { useAuth } from "@/contexts/AuthContext";
+import { useNavigate } from "react-router";
 
 interface LoginFormData {
   email:string
@@ -23,6 +24,7 @@ const intialValues:LoginFormData = {
 
 const LoginForm = () => {
   const auth = useAuth();
+  const navigate = useNavigate()
 
   const [formData, setFormData] = useState<LoginFormData>(intialValues)
   const [errors,setErrors] = useState<errors>({} as errors)
@@ -42,6 +44,8 @@ const LoginForm = () => {
         e.preventDefault();
         await auth.login(formData.email, formData.password);
         setErrors({} as errors);
+        navigate('/chat')
+
       } catch (error) {  
         const errors = error as ErrorResponse<unknown>;      
         setErrors(errors.error as errors);
@@ -51,10 +55,8 @@ const LoginForm = () => {
   return (
     <>
     <form onSubmit={postLogin} className="space-y-4">
-      <FormField label="Email" name="email" type="email" id="email" placeholder="Enter your email" onChange={handleInputChange} value={formData.email} />
-      <label htmlFor="email">{errors?.email}</label>
-      <FormField label="Password" name="password" type="password" id="password" placeholder="Enter your password" onChange={handleInputChange} value={formData.password}/>
-      <label htmlFor="email">{errors?.password}</label>
+      <FormField label="Email" name="email" type="email" id="email" placeholder="Enter your email" onChange={handleInputChange} value={formData.email} errorMessage={errors?.email} />
+      <FormField label="Password" name="password" type="password" id="password" placeholder="Enter your password" onChange={handleInputChange} value={formData.password} errorMessage={errors?.password}/>
       <Button type="submit">Login</Button>
     </form>
     </>

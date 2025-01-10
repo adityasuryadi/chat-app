@@ -17,6 +17,7 @@ const ChatMessageList = () => {
   const {message} = useMessage()  
 
   useEffect(() => {
+    console.warn("render")
     if (message) {
       setMessages(prevMessages => [...prevMessages, message])
     }

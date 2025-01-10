@@ -72,7 +72,7 @@ const useWebSocket = (
       setWebsocket(null);
       onClose?.(event);
     };
-  }, [websocket, url, onOpen, onError, onClose]);
+  }, [contextSendMessage, onClose, onError, onOpen, url, websocket]);
 
   return {
     sendMessage,
